@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="放射科醫師臨床照護六大核心能力影片大字報" />
+  <title>六大核心能力｜放射科醫師臨床照護大字報</title>
+  <style>
+    :root {
+      --bg: #070b12;
+      --surface: #0d1420;
+      --surface-2: #141f2f;
+      --text: #f7fbff;
+      --muted: #aebbd0;
+      --accent: #69d2ff;
+      --accent-2: #a8f0c6;
+      --warning: #ffd166;
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 24px 80px rgba(0,0,0,.4);
+      --font-size: clamp(34px, 5.2vw, 76px);
+      --line-height: 1.55;
+      --max-width: 1280px;
+    }
+
+    [data-theme="light"] {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-2: #eef4fb;
+      --text: #101722;
+      --muted: #50627a;
+      --accent: #006d9c;
+      --accent-2: #087f5b;
+      --warning: #9a5b00;
+      --border: rgba(10,25,41,.14);
+      --shadow: 0 20px 70px rgba(14, 36, 61, .16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(105,210,255,.18), transparent 34%),
+        radial-gradient(circle at 90% 10%, rgba(168,240,198,.12), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    button, select { font: inherit; }
+
+    .app {
+      height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 18px;
+      gap: 14px;
+    }
+
+    header, footer {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      letter-spacing: .03em;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 24px var(--accent);
+    }
+
+    .progress-wrap {
+      flex: 1;
+      height: 10px;
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
+
+    main {
+      max-width: var(--max-width);
+      width: 100%;
+      min-height: 0;
+      margin: 0 auto;
+      display: grid;
+    }
+
+    .card {
+      min-height: 0;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 4vw, 64px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 26px;
+      backdrop-filter: blur(18px);
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: clamp(20px, 2vw, 30px);
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 7vw, 104px);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      text-wrap: balance;
+    }
+
+    .script {
+      overflow: auto;
+      scroll-behavior: smooth;
+      padding-right: 8px;
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      letter-spacing: .01em;
+      font-weight: 700;
+      text-wrap: pretty;
+    }
+
+    .script p { margin: 0 0 1.05em; }
+    .script p:last-child { margin-bottom: 0; }
+
+    .script strong { color: var(--warning); }
+    .script .soft { color: var(--muted); font-weight: 650; }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: clamp(16px, 1.5vw, 22px);
+    }
+
+    .pill {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      border-radius: 999px;
+      padding: 8px 14px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    button {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 16px;
+      color: var(--text);
+      background: var(--surface-2);
+      cursor: pointer;
+      min-height: 48px;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+
+    button:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--accent) 70%, var(--border)); }
+    button:active { transform: translateY(0); }
+    button.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #061017; font-weight: 900; border: 0; }
+
+    .counter {
+      color: var(--muted);
+      font-size: 20px;
+      min-width: 90px;
+      text-align: right;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .drawer {
+      position: fixed;
+      right: 18px;
+      top: 72px;
+      width: min(380px, calc(100vw - 36px));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--surface) 96%, transparent);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: none;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+    }
+
+    .drawer.open { display: block; }
+    .drawer h2 { margin: 0 0 12px; font-size: 22px; }
+    .row { display: grid; gap: 8px; margin: 14px 0; color: var(--muted); }
+    input[type="range"] { width: 100%; }
+
+    .toc {
+      max-height: 42vh;
+      overflow: auto;
+      display: grid;
+      gap: 8px;
+    }
+
+    .toc button {
+      text-align: left;
+      border-radius: 12px;
+      min-height: 42px;
+      padding: 10px 12px;
+      color: var(--muted);
+    }
+    .toc button.active { color: var(--text); border-color: var(--accent); }
+
+    .print-all { display: none; }
+
+    @media (max-width: 720px) {
+      .app { padding: 10px; gap: 10px; }
+      header { align-items: flex-start; }
+      .brand { font-size: 14px; }
+      .card { border-radius: 22px; padding: 22px; gap: 18px; }
+      .script { font-size: clamp(30px, 10vw, 52px); }
+      .hint { display: none; }
+    }
+
+    @media print {
+      body { overflow: visible; background: #fff; color: #000; }
+      .app { display: block; height: auto; padding: 0; }
+      header, footer, .drawer, .card { display: none; }
+      .print-all { display: block; padding: 24px; font-size: 26px; line-height: 1.65; }
+      .print-all h1 { font-size: 42px; page-break-after: avoid; }
+      .print-all h2 { font-size: 32px; margin-top: 1.2em; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="app">
+    <header>
+      <div class="brand"><span class="dot"></span><span>放射科醫師｜臨床照護六大核心能力</span></div>
+      <div class="progress-wrap" aria-label="進度"><div class="progress" id="progress"></div></div>
+      <div class="counter" id="counter">1 / 9</div>
+    </header>
+
+    <main>
+      <section class="card" aria-live="polite">
+        <div>
+          <div class="kicker" id="kicker">開場</div>
+          <h1 id="title">六大核心能力學習反思</h1>
+        </div>
+        <article class="script" id="script"></article>
+        <div class="meta" id="meta"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="buttons">
+        <button id="prev">← 上一段</button>
+        <button class="primary" id="next">下一段 →</button>
+        <button id="auto">自動捲動</button>
+        <button id="fullscreen">全螢幕</button>
+        <button id="settings">設定</button>
+      </div>
+      <div class="hint">鍵盤：←/→ 換段、空白鍵自動捲動、F 全螢幕、T 換主題</div>
+    </footer>
+  </div>
+
+  <aside class="drawer" id="drawer" aria-label="設定面板">
+    <h2>大字報設定</h2>
+    <div class="row">
+      <label for="fontSize">字體大小</label>
+      <input id="fontSize" type="range" min="30" max="92" value="58" />
+    </div>
+    <div class="row">
+      <label for="speed">自動捲動速度</label>
+      <input id="speed" type="range" min="1" max="8" value="3" />
+    </div>
+    <div class="row">
+      <button id="theme">黑底/白底切換</button>
+    </div>
+    <div class="row">
+      <strong>段落目錄</strong>
+      <div class="toc" id="toc"></div>
+    </div>
+  </aside>
+
+  <section class="print-all" id="printAll"></section>
+
+  <script>
+    const slides = [
+      {
+        kicker: '開場｜約 40 秒',
+        title: '六大核心能力學習反思',
+        tags: ['建議語速：自然、不要太快', '鏡頭：半身正面'],
+        body: [
+          '大家好，我是 ___。',
+          '這次影片想分享的是，身為放射科醫師，我如何在影像判讀、臨床溝通與跨團隊合作中，理解並實踐六大核心能力。',
+          '放射科的臨床照護常常不是直接站在病床前，但我們的每一份報告、每一次電話討論、每一個危急值通報，其實都會影響病人的診斷速度與治療方向。'
+        ]
+      },
+      {
+        kicker: '臨床情境｜約 60 秒',
+        title: '以去識別化案例作為主軸',
+        tags: ['不要出現病人姓名、病歷號、影像編號', '可用示意圖或模擬畫面'],
+        body: [
+          '我想用一個去識別化的臨床情境作為主軸。',
+          '一位急診病人因為急性腹痛接受腹部電腦斷層檢查。影像上可以看到可能需要緊急處置的病灶，因此放射科醫師不只是完成影像判讀，也需要快速整合臨床資訊、做出清楚報告，並且在必要時主動聯繫臨床團隊。',
+          '這個過程看起來只是一次影像檢查，但其實包含了病人照護、醫學知識、溝通、專業素養，以及制度下的團隊合作。'
+        ]
+      },
+      {
+        kicker: '核心能力 1｜病人照護',
+        title: '影像判讀的目的，是讓病人更快得到正確照護',
+        tags: ['重點：臨床導向，不只是描述影像'],
+        body: [
+          '在病人照護方面，我體會到放射科報告不是單純描述影像所見，而是要回答臨床真正需要知道的問題。',
+          '例如影像是否有急症？是否需要立即處置？病灶範圍到哪裡？有沒有併發症？這些資訊都會直接影響後續治療。',
+          '因此在判讀影像時，我會盡量把臨床問題放在心裡，整合病史、檢查適應症、過去影像與目前影像變化，讓報告能真正幫助臨床決策。'
+        ]
+      },
+      {
+        kicker: '核心能力 2｜醫學知識',
+        title: '把解剖、病理與臨床脈絡連在一起',
+        tags: ['可拍：查 guideline、翻書、影像示意圖'],
+        body: [
+          '在醫學知識方面，放射科需要的不只是認得影像表現，也要理解背後的解剖、病理機轉與臨床意義。',
+          '同樣一個影像徵象，在不同年齡、不同病史、不同臨床情境下，鑑別診斷可能完全不同。',
+          '遇到不典型或不確定的影像表現時，我會回頭查閱文獻、教科書或 guideline，也會和主治醫師、臨床團隊討論，讓自己的判斷更有根據。'
+        ]
+      },
+      {
+        kicker: '核心能力 3｜臨床工作中的學習與改進',
+        title: '從回饋中修正自己的判讀流程',
+        tags: ['重點：反思與持續改進'],
+        body: [
+          '在臨床工作中的學習與改進方面，我覺得放射科是一個非常需要持續回饋的領域。',
+          '每一次病例討論、教學會議、手術或病理結果回饋，都是重新檢視自己判讀流程的機會。',
+          '我也學到，錯過一個細節時，重要的不是只記住答案，而是回頭檢查自己為什麼會忽略它：是搜尋模式不夠完整、臨床資訊沒有整合，還是鑑別診斷想得不夠廣。'
+        ]
+      },
+      {
+        kicker: '核心能力 4｜人際溝通技巧',
+        title: '好的報告與好的溝通，同樣重要',
+        tags: ['可拍：電話通報、團隊討論的模擬畫面'],
+        body: [
+          '在人際溝通技巧方面，我深刻感受到，放射科醫師的溝通不只發生在報告文字裡，也發生在電話、會診討論和跨科團隊會議中。',
+          '當影像有危急或重要發現時，報告寫得正確還不夠，也要確保臨床團隊及時收到訊息，並且理解影像發現的臨床意義。',
+          '因此我會盡量用清楚、精簡、臨床可執行的語言溝通，例如直接說明最重要的發現、可能診斷、嚴重程度，以及建議下一步處置方向。'
+        ]
+      },
+      {
+        kicker: '核心能力 5｜專業素養',
+        title: '速度、準確與病人隱私，都需要被守住',
+        tags: ['重要：影片也要注意隱私保護'],
+        body: [
+          '在專業素養方面，放射科工作常常需要在時間壓力下維持判讀品質。',
+          '面對急診、住院與門診大量影像檢查時，如何在效率與準確性之間取得平衡，是每天都會遇到的挑戰。',
+          '另外，影像本身也是病人的個人資料。無論是教學、討論或製作這支影片，都必須注意去識別化，避免出現姓名、病歷號、檢查編號或任何可能辨識病人的資訊。這是對病人最基本的尊重。'
+        ]
+      },
+      {
+        kicker: '核心能力 6｜制度下的臨床工作',
+        title: '放射科是醫療流程中的關鍵節點',
+        tags: ['重點：系統、流程、團隊合作'],
+        body: [
+          '在制度下的臨床工作方面，我更理解放射科不是獨立運作的單位，而是整個醫療流程中的關鍵節點。',
+          '一個檢查從開單、安排、執行、影像品質確認，到判讀、通報與後續追蹤，每個環節都需要放射師、護理師、行政同仁、臨床醫師與放射科醫師合作。',
+          '如果流程順暢，病人可以更快得到診斷；如果流程中有任何延遲或資訊落差，臨床照護也可能受到影響。這讓我學到，好的醫療不只靠個人能力，也靠團隊與系統。'
+        ]
+      },
+      {
+        kicker: '總結反思｜約 60 秒',
+        title: '六大核心能力，是每天都會用到的臨床能力',
+        tags: ['結尾：語速放慢、眼神看鏡頭'],
+        body: [
+          '透過這次回顧，我更理解六大核心能力不是考核表上的項目，而是放射科臨床工作中每天都會用到的能力。',
+          '病人照護讓我記得，影像判讀的終點是病人的治療決策；醫學知識讓我持續累積判斷的基礎；學習與改進提醒我從回饋中修正自己；溝通技巧讓影像資訊能被正確傳遞；專業素養讓我在壓力下仍然守住品質與隱私；制度下的臨床工作則提醒我，醫療照護永遠是團隊合作。',
+          '未來我希望自己能持續精進影像判讀能力，也讓每一份報告、每一次通報與每一次討論，都能更貼近臨床需要，真正幫助病人。謝謝大家。'
+        ]
+      }
+    ];
+
+    const state = {
+      index: Number(localStorage.getItem('slideIndex') || 0),
+      auto: false,
+      timer: null,
+      speed: Number(localStorage.getItem('speed') || 3)
+    };
+
+    const el = {
+      body: document.body,
+      progress: document.getElementById('progress'),
+      counter: document.getElementById('counter'),
+      kicker: document.getElementById('kicker'),
+      title: document.getElementById('title'),
+      script: document.getElementById('script'),
+      meta: document.getElementById('meta'),
+      prev: document.getElementById('prev'),
+      next: document.getElementById('next'),
+      auto: document.getElementById('auto'),
+      fullscreen: document.getElementById('fullscreen'),
+      settings: document.getElementById('settings'),
+      drawer: document.getElementById('drawer'),
+      fontSize: document.getElementById('fontSize'),
+      speed: document.getElementById('speed'),
+      theme: document.getElementById('theme'),
+      toc: document.getElementById('toc'),
+      printAll: document.getElementById('printAll')
+    };
+
+    function render() {
+      state.index = Math.max(0, Math.min(slides.length - 1, state.index));
+      const slide = slides[state.index];
+      el.kicker.textContent = slide.kicker;
+      el.title.textContent = slide.title;
+      el.script.innerHTML = slide.body.map(text => `<p>${emphasis(text)}</p>`).join('');
+      el.script.scrollTop = 0;
+      el.meta.innerHTML = slide.tags.map(tag => `<span class="pill">${tag}</span>`).join('');
+      el.counter.textContent = `${state.index + 1} / ${slides.length}`;
+      el.progress.style.width = `${((state.index + 1) / slides.length) * 100}%`;
+      el.prev.disabled = state.index === 0;
+      el.next.textContent = state.index === slides.length - 1 ? '回到開場 ↺' : '下一段 →';
+      localStorage.setItem('slideIndex', String(state.index));
+      renderToc();
+    }
+
+    function emphasis(text) {
+      return text
+        .replaceAll('放射科醫師', '<strong>放射科醫師</strong>')
+        .replaceAll('六大核心能力', '<strong>六大核心能力</strong>')
+        .replaceAll('病人隱私', '<strong>病人隱私</strong>')
+        .replaceAll('危急值通報', '<strong>危急值通報</strong>')
+        .replaceAll('去識別化', '<strong>去識別化</strong>');
+    }
+
+    function next() {
+      if (state.index >= slides.length - 1) state.index = 0;
+      else state.index += 1;
+      stopAuto();
+      render();
+    }
+
+    function prev() {
+      state.index -= 1;
+      stopAuto();
+      render();
+    }
+
+    function toggleAuto() {
+      state.auto ? stopAuto() : startAuto();
+    }
+
+    function startAuto() {
+      state.auto = true;
+      el.auto.textContent = '停止捲動';
+      state.timer = setInterval(() => {
+        el.script.scrollTop += state.speed;
+        const atBottom = el.script.scrollTop + el.script.clientHeight >= el.script.scrollHeight - 4;
+        if (atBottom) stopAuto();
+      }, 40);
+    }
+
+    function stopAuto() {
+      state.auto = false;
+      el.auto.textContent = '自動捲動';
+      if (state.timer) clearInterval(state.timer);
+      state.timer = null;
+    }
+
+    function toggleTheme() {
+      const nextTheme = el.body.dataset.theme === 'dark' ? 'light' : 'dark';
+      el.body.dataset.theme = nextTheme;
+      localStorage.setItem('theme', nextTheme);
+    }
+
+    function renderToc() {
+      el.toc.innerHTML = slides.map((slide, i) =>
+        `<button class="${i === state.index ? 'active' : ''}" data-index="${i}">${i + 1}. ${slide.title}</button>`
+      ).join('');
+    }
+
+    function renderPrint() {
+      el.printAll.innerHTML = `<h1>六大核心能力學習反思｜放射科醫師臨床照護</h1>` + slides.map((slide, i) => `
+        <h2>${i + 1}. ${slide.title}</h2>
+        ${slide.body.map(p => `<p>${p}</p>`).join('')}
+      `).join('');
+    }
+
+    el.prev.addEventListener('click', prev);
+    el.next.addEventListener('click', next);
+    el.auto.addEventListener('click', toggleAuto);
+    el.fullscreen.addEventListener('click', () => {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    });
+    el.settings.addEventListener('click', () => el.drawer.classList.toggle('open'));
+    el.theme.addEventListener('click', toggleTheme);
+    el.fontSize.addEventListener('input', (e) => {
+      document.documentElement.style.setProperty('--font-size', `${e.target.value}px`);
+      localStorage.setItem('fontSize', e.target.value);
+    });
+    el.speed.addEventListener('input', (e) => {
+      state.speed = Number(e.target.value);
+      localStorage.setItem('speed', e.target.value);
+    });
+    el.toc.addEventListener('click', (e) => {
+      const button = e.target.closest('button[data-index]');
+      if (!button) return;
+      state.index = Number(button.dataset.index);
+      stopAuto();
+      render();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === ' ') { e.preventDefault(); toggleAuto(); }
+      if (e.key.toLowerCase() === 'f') el.fullscreen.click();
+      if (e.key.toLowerCase() === 't') toggleTheme();
+      if (e.key === 'Escape') el.drawer.classList.remove('open');
+    });
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) el.body.dataset.theme = savedTheme;
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+      el.fontSize.value = savedFontSize;
+      document.documentElement.style.setProperty('--font-size', `${savedFontSize}px`);
+    }
+    el.speed.value = state.speed;
+    renderPrint();
+    render();
+  </script>
+</body>
+</html>
