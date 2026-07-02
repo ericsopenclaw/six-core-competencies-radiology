@@ -3,54 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="放射科醫師臨床照護六大核心能力影片大字報" />
-  <title>六大核心能力｜放射科醫師臨床照護大字報</title>
+  <meta name="description" content="放射科醫師臨床照護六大核心能力：主治醫師兼臨床教師與醫學實習生一問一答大字報" />
+  <title>六大核心能力｜放射科一問一答大字報</title>
   <style>
     :root {
-      --bg: #070b12;
-      --surface: #0d1420;
-      --surface-2: #141f2f;
-      --text: #f7fbff;
-      --muted: #aebbd0;
-      --accent: #69d2ff;
-      --accent-2: #a8f0c6;
+      --bg: #061018;
+      --surface: #0b1622;
+      --surface-2: #111f2e;
+      --teacher: #74d8ff;
+      --student: #b8f7cf;
+      --text: #f8fbff;
+      --muted: #a8b7ca;
+      --border: rgba(255,255,255,.15);
       --warning: #ffd166;
-      --border: rgba(255,255,255,.14);
-      --shadow: 0 24px 80px rgba(0,0,0,.4);
-      --font-size: clamp(34px, 5.2vw, 76px);
-      --line-height: 1.55;
-      --max-width: 1280px;
+      --shadow: 0 24px 90px rgba(0,0,0,.42);
+      --font-size: clamp(28px, 3.2vw, 42px);
+      --line-height: 1.38;
+      --max-width: 1320px;
     }
 
     [data-theme="light"] {
-      --bg: #f6f8fb;
+      --bg: #f4f7fb;
       --surface: #ffffff;
-      --surface-2: #eef4fb;
-      --text: #101722;
-      --muted: #50627a;
-      --accent: #006d9c;
-      --accent-2: #087f5b;
-      --warning: #9a5b00;
+      --surface-2: #edf3fa;
+      --teacher: #006d9c;
+      --student: #087f5b;
+      --text: #0d1722;
+      --muted: #53667c;
       --border: rgba(10,25,41,.14);
-      --shadow: 0 20px 70px rgba(14, 36, 61, .16);
+      --warning: #9a5b00;
+      --shadow: 0 22px 80px rgba(14,36,61,.15);
     }
 
     * { box-sizing: border-box; }
-
     html, body { margin: 0; min-height: 100%; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
       background:
-        radial-gradient(circle at 12% 8%, rgba(105,210,255,.18), transparent 34%),
-        radial-gradient(circle at 90% 10%, rgba(168,240,198,.12), transparent 28%),
+        radial-gradient(circle at 8% 10%, color-mix(in srgb, var(--teacher) 25%, transparent), transparent 32%),
+        radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--student) 18%, transparent), transparent 30%),
         var(--bg);
       color: var(--text);
       overflow: hidden;
     }
 
-    button, select { font: inherit; }
-
+    button { font: inherit; }
     .app {
       height: 100vh;
       display: grid;
@@ -58,230 +55,228 @@
       padding: 18px;
       gap: 14px;
     }
-
     header, footer {
-      max-width: var(--max-width);
       width: 100%;
+      max-width: var(--max-width);
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
     }
-
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
       color: var(--muted);
-      letter-spacing: .03em;
       font-size: 18px;
+      letter-spacing: .03em;
       white-space: nowrap;
     }
-
-    .dot {
-      width: 13px;
-      height: 13px;
+    .brand-mark {
+      width: 34px;
+      height: 18px;
       border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 24px var(--accent);
+      background: linear-gradient(90deg, var(--teacher), var(--student));
+      box-shadow: 0 0 28px color-mix(in srgb, var(--teacher) 45%, transparent);
     }
-
     .progress-wrap {
       flex: 1;
       height: 10px;
-      background: rgba(255,255,255,.12);
       border-radius: 999px;
-      overflow: hidden;
       border: 1px solid var(--border);
+      background: rgba(255,255,255,.1);
+      overflow: hidden;
     }
-
-    .progress {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border-radius: 999px;
-      transition: width .25s ease;
-    }
+    .progress { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teacher), var(--student)); transition: width .25s ease; }
+    .counter { min-width: 100px; text-align: right; color: var(--muted); font-size: 20px; }
 
     main {
-      max-width: var(--max-width);
-      width: 100%;
       min-height: 0;
+      width: 100%;
+      max-width: var(--max-width);
       margin: 0 auto;
       display: grid;
     }
-
     .card {
       min-height: 0;
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--surface) 92%, transparent);
-      border-radius: 34px;
-      box-shadow: var(--shadow);
-      padding: clamp(28px, 4vw, 64px);
       display: grid;
       grid-template-rows: auto 1fr auto;
-      gap: 26px;
+      gap: 22px;
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 3.8vw, 56px);
       backdrop-filter: blur(18px);
     }
-
+    .topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
     .kicker {
-      color: var(--accent);
-      font-size: clamp(20px, 2vw, 30px);
+      color: var(--muted);
+      font-size: clamp(18px, 1.7vw, 26px);
       font-weight: 800;
       letter-spacing: .08em;
+      margin-bottom: 10px;
     }
-
     h1 {
       margin: 0;
-      font-size: clamp(40px, 7vw, 104px);
+      font-size: clamp(36px, 5.8vw, 88px);
       line-height: 1.08;
       letter-spacing: -.04em;
       text-wrap: balance;
     }
-
-    .script {
+    .timer {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: clamp(15px, 1.3vw, 20px);
+      white-space: nowrap;
+    }
+    .dialogue {
       overflow: auto;
-      scroll-behavior: smooth;
       padding-right: 8px;
+      display: grid;
+      align-content: start;
+      gap: 22px;
+      scroll-behavior: smooth;
+    }
+    .line {
+      display: grid;
+      grid-template-columns: minmax(150px, 220px) 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: clamp(18px, 2vw, 28px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: color-mix(in srgb, var(--surface-2) 76%, transparent);
+    }
+    .line.teacher { border-left: 10px solid var(--teacher); }
+    .line.student { border-left: 10px solid var(--student); }
+    .role {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-weight: 850;
+      font-size: clamp(18px, 1.8vw, 26px);
+      line-height: 1.2;
+    }
+    .role .badge {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: #061018;
+      font-size: .78em;
+      letter-spacing: .06em;
+    }
+    .teacher .badge { background: var(--teacher); }
+    .student .badge { background: var(--student); }
+    .text {
       font-size: var(--font-size);
       line-height: var(--line-height);
-      letter-spacing: .01em;
-      font-weight: 700;
+      font-weight: 780;
+      letter-spacing: .005em;
       text-wrap: pretty;
     }
-
-    .script p { margin: 0 0 1.05em; }
-    .script p:last-child { margin-bottom: 0; }
-
-    .script strong { color: var(--warning); }
-    .script .soft { color: var(--muted); font-weight: 650; }
-
+    .text p { margin: 0 0 .72em; }
+    .text p:last-child { margin-bottom: 0; }
+    .text strong { color: var(--warning); }
     .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
+      gap: 10px;
       color: var(--muted);
-      font-size: clamp(16px, 1.5vw, 22px);
+      font-size: clamp(15px, 1.4vw, 21px);
     }
-
     .pill {
       border: 1px solid var(--border);
       background: var(--surface-2);
       border-radius: 999px;
-      padding: 8px 14px;
+      padding: 8px 13px;
     }
-
-    .controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
     .buttons { display: flex; gap: 10px; flex-wrap: wrap; }
-
     button {
+      min-height: 48px;
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 12px 16px;
       color: var(--text);
       background: var(--surface-2);
       cursor: pointer;
-      min-height: 48px;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      transition: transform .12s ease, border-color .12s ease;
     }
-
-    button:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--accent) 70%, var(--border)); }
+    button:hover { transform: translateY(-1px); border-color: var(--teacher); }
     button:active { transform: translateY(0); }
-    button.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #061017; font-weight: 900; border: 0; }
-
-    .counter {
-      color: var(--muted);
-      font-size: 20px;
-      min-width: 90px;
-      text-align: right;
-    }
-
-    .hint {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
+    button.primary { border: 0; color: #061018; background: linear-gradient(135deg, var(--teacher), var(--student)); font-weight: 900; }
+    .hint { color: var(--muted); font-size: 16px; }
     .drawer {
       position: fixed;
       right: 18px;
       top: 72px;
-      width: min(380px, calc(100vw - 36px));
+      width: min(400px, calc(100vw - 36px));
+      z-index: 10;
+      display: none;
       border: 1px solid var(--border);
       border-radius: 24px;
       background: color-mix(in srgb, var(--surface) 96%, transparent);
       box-shadow: var(--shadow);
       padding: 18px;
-      display: none;
-      z-index: 10;
       backdrop-filter: blur(18px);
     }
-
     .drawer.open { display: block; }
-    .drawer h2 { margin: 0 0 12px; font-size: 22px; }
+    .drawer h2 { margin: 0 0 12px; font-size: 24px; }
     .row { display: grid; gap: 8px; margin: 14px 0; color: var(--muted); }
     input[type="range"] { width: 100%; }
-
-    .toc {
-      max-height: 42vh;
-      overflow: auto;
-      display: grid;
-      gap: 8px;
-    }
-
-    .toc button {
-      text-align: left;
-      border-radius: 12px;
-      min-height: 42px;
-      padding: 10px 12px;
-      color: var(--muted);
-    }
-    .toc button.active { color: var(--text); border-color: var(--accent); }
-
+    .toc { max-height: 42vh; overflow: auto; display: grid; gap: 8px; }
+    .toc button { text-align: left; min-height: 42px; border-radius: 12px; padding: 10px 12px; color: var(--muted); }
+    .toc button.active { color: var(--text); border-color: var(--student); }
     .print-all { display: none; }
 
-    @media (max-width: 720px) {
+    @media (max-width: 820px) {
       .app { padding: 10px; gap: 10px; }
-      header { align-items: flex-start; }
       .brand { font-size: 14px; }
-      .card { border-radius: 22px; padding: 22px; gap: 18px; }
-      .script { font-size: clamp(30px, 10vw, 52px); }
+      .card { border-radius: 22px; padding: 18px; gap: 16px; }
+      .topline { display: grid; }
+      .line { grid-template-columns: 1fr; gap: 12px; border-radius: 22px; }
+      .text { font-size: clamp(30px, 9vw, 52px); }
       .hint { display: none; }
     }
 
     @media print {
       body { overflow: visible; background: #fff; color: #000; }
-      .app { display: block; height: auto; padding: 0; }
-      header, footer, .drawer, .card { display: none; }
-      .print-all { display: block; padding: 24px; font-size: 26px; line-height: 1.65; }
-      .print-all h1 { font-size: 42px; page-break-after: avoid; }
-      .print-all h2 { font-size: 32px; margin-top: 1.2em; }
+      .app, .drawer { display: none; }
+      .print-all { display: block; padding: 24px; font-size: 24px; line-height: 1.65; }
+      .print-all h1 { font-size: 42px; }
+      .print-all h2 { font-size: 32px; margin-top: 1.4em; }
+      .print-all .print-role { font-weight: 900; margin-top: 1em; }
     }
   </style>
 </head>
 <body data-theme="dark">
   <div class="app">
     <header>
-      <div class="brand"><span class="dot"></span><span>放射科醫師｜臨床照護六大核心能力</span></div>
+      <div class="brand"><span class="brand-mark"></span><span>一問一答大字報｜主治醫師兼臨床教師 × 醫學實習生</span></div>
       <div class="progress-wrap" aria-label="進度"><div class="progress" id="progress"></div></div>
-      <div class="counter" id="counter">1 / 9</div>
+      <div class="counter" id="counter">1 / 40</div>
     </header>
 
     <main>
       <section class="card" aria-live="polite">
-        <div>
-          <div class="kicker" id="kicker">開場</div>
-          <h1 id="title">六大核心能力學習反思</h1>
+        <div class="topline">
+          <div>
+            <div class="kicker" id="kicker">開場</div>
+            <h1 id="title">放射科裡的臨床照護</h1>
+          </div>
+          <div class="timer" id="timer">建議：40 秒</div>
         </div>
-        <article class="script" id="script"></article>
+        <article class="dialogue" id="dialogue"></article>
         <div class="meta" id="meta"></div>
       </section>
     </main>
@@ -302,15 +297,13 @@
     <h2>大字報設定</h2>
     <div class="row">
       <label for="fontSize">字體大小</label>
-      <input id="fontSize" type="range" min="30" max="92" value="58" />
+      <input id="fontSize" type="range" min="26" max="64" value="38" />
     </div>
     <div class="row">
       <label for="speed">自動捲動速度</label>
       <input id="speed" type="range" min="1" max="8" value="3" />
     </div>
-    <div class="row">
-      <button id="theme">黑底/白底切換</button>
-    </div>
+    <div class="row"><button id="theme">黑底/白底切換</button></div>
     <div class="row">
       <strong>段落目錄</strong>
       <div class="toc" id="toc"></div>
@@ -320,104 +313,692 @@
   <section class="print-all" id="printAll"></section>
 
   <script>
+    const roleNames = {
+      teacher: { label: '主治醫師兼臨床教師', short: '老師' },
+      student: { label: '醫學實習生', short: '學生' }
+    };
+
     const slides = [
       {
-        kicker: '開場｜約 40 秒',
-        title: '六大核心能力學習反思',
-        tags: ['建議語速：自然、不要太快', '鏡頭：半身正面'],
-        body: [
-          '大家好，我是 ___。',
-          '這次影片想分享的是，身為放射科醫師，我如何在影像判讀、臨床溝通與跨團隊合作中，理解並實踐六大核心能力。',
-          '放射科的臨床照護常常不是直接站在病床前，但我們的每一份報告、每一次電話討論、每一個危急值通報，其實都會影響病人的診斷速度與治療方向。'
-        ]
+            "kicker": "開場 1｜老師",
+            "title": "放射科裡的臨床照護",
+            "time": "建議：20 秒",
+            "tags": [
+                  "主治醫師兼臨床教師",
+                  "看鏡頭開場"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "今天我們用一問一答的方式，聊聊放射科醫師在臨床照護中的六大核心能力。"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '臨床情境｜約 60 秒',
-        title: '以去識別化案例作為主軸',
-        tags: ['不要出現病人姓名、病歷號、影像編號', '可用示意圖或模擬畫面'],
-        body: [
-          '我想用一個去識別化的臨床情境作為主軸。',
-          '一位急診病人因為急性腹痛接受腹部電腦斷層檢查。影像上可以看到可能需要緊急處置的病灶，因此放射科醫師不只是完成影像判讀，也需要快速整合臨床資訊、做出清楚報告，並且在必要時主動聯繫臨床團隊。',
-          '這個過程看起來只是一次影像檢查，但其實包含了病人照護、醫學知識、溝通、專業素養，以及制度下的團隊合作。'
-        ]
+            "kicker": "開場 2｜老師",
+            "title": "影像判讀是臨床決策的關鍵",
+            "time": "建議：20 秒",
+            "tags": [
+                  "語氣自然",
+                  "不用太正式"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "很多人會覺得放射科離病人比較遠，但其實影像判讀常常是臨床決策的關鍵。"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '核心能力 1｜病人照護',
-        title: '影像判讀的目的，是讓病人更快得到正確照護',
-        tags: ['重點：臨床導向，不只是描述影像'],
-        body: [
-          '在病人照護方面，我體會到放射科報告不是單純描述影像所見，而是要回答臨床真正需要知道的問題。',
-          '例如影像是否有急症？是否需要立即處置？病灶範圍到哪裡？有沒有併發症？這些資訊都會直接影響後續治療。',
-          '因此在判讀影像時，我會盡量把臨床問題放在心裡，整合病史、檢查適應症、過去影像與目前影像變化，讓報告能真正幫助臨床決策。'
-        ]
+            "kicker": "開場 3｜學生",
+            "title": "從學生角度提問",
+            "time": "建議：25 秒",
+            "tags": [
+                  "醫學實習生",
+                  "自然接話"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "老師，我以前也以為放射科主要是看影像、寫報告。這次想請老師帶我理解，放射科醫師怎麼把影像工作和病人照護連在一起。"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '核心能力 2｜醫學知識',
-        title: '把解剖、病理與臨床脈絡連在一起',
-        tags: ['可拍：查 guideline、翻書、影像示意圖'],
-        body: [
-          '在醫學知識方面，放射科需要的不只是認得影像表現，也要理解背後的解剖、病理機轉與臨床意義。',
-          '同樣一個影像徵象，在不同年齡、不同病史、不同臨床情境下，鑑別診斷可能完全不同。',
-          '遇到不典型或不確定的影像表現時，我會回頭查閱文獻、教科書或 guideline，也會和主治醫師、臨床團隊討論，讓自己的判斷更有根據。'
-        ]
+            "kicker": "情境 1｜老師",
+            "title": "從急診影像案例開始",
+            "time": "建議：20 秒",
+            "tags": [
+                  "案例去識別化",
+                  "可用示意圖"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "我們用一個去識別化的情境來看：一位急診病人因為急性腹痛，接受腹部電腦斷層檢查。"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '核心能力 3｜臨床工作中的學習與改進',
-        title: '從回饋中修正自己的判讀流程',
-        tags: ['重點：反思與持續改進'],
-        body: [
-          '在臨床工作中的學習與改進方面，我覺得放射科是一個非常需要持續回饋的領域。',
-          '每一次病例討論、教學會議、手術或病理結果回饋，都是重新檢視自己判讀流程的機會。',
-          '我也學到，錯過一個細節時，重要的不是只記住答案，而是回頭檢查自己為什麼會忽略它：是搜尋模式不夠完整、臨床資訊沒有整合，還是鑑別診斷想得不夠廣。'
-        ]
+            "kicker": "情境 2｜老師",
+            "title": "臨床團隊真正想知道什麼？",
+            "time": "建議：20 秒",
+            "tags": [
+                  "臨床問題導向"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "臨床團隊想知道的，不只是影像長什麼樣子，而是有沒有需要立即處理的急症。"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '核心能力 4｜人際溝通技巧',
-        title: '好的報告與好的溝通，同樣重要',
-        tags: ['可拍：電話通報、團隊討論的模擬畫面'],
-        body: [
-          '在人際溝通技巧方面，我深刻感受到，放射科醫師的溝通不只發生在報告文字裡，也發生在電話、會診討論和跨科團隊會議中。',
-          '當影像有危急或重要發現時，報告寫得正確還不夠，也要確保臨床團隊及時收到訊息，並且理解影像發現的臨床意義。',
-          '因此我會盡量用清楚、精簡、臨床可執行的語言溝通，例如直接說明最重要的發現、可能診斷、嚴重程度，以及建議下一步處置方向。'
-        ]
+            "kicker": "情境 3｜學生",
+            "title": "報告要回答臨床問題",
+            "time": "建議：25 秒",
+            "tags": [
+                  "學生回應"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "所以這時候放射科報告不是單純描述看到什麼，而是要回答：有沒有急症？嚴重程度如何？下一步該怎麼處理？"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '核心能力 5｜專業素養',
-        title: '速度、準確與病人隱私，都需要被守住',
-        tags: ['重要：影片也要注意隱私保護'],
-        body: [
-          '在專業素養方面，放射科工作常常需要在時間壓力下維持判讀品質。',
-          '面對急診、住院與門診大量影像檢查時，如何在效率與準確性之間取得平衡，是每天都會遇到的挑戰。',
-          '另外，影像本身也是病人的個人資料。無論是教學、討論或製作這支影片，都必須注意去識別化，避免出現姓名、病歷號、檢查編號或任何可能辨識病人的資訊。這是對病人最基本的尊重。'
-        ]
+            "kicker": "核心能力 1｜學生提問",
+            "title": "病人照護",
+            "time": "建議：15 秒",
+            "tags": [
+                  "六大核心能力 1"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "老師，放射科醫師在「病人照護」上，最重要的是什麼？"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '核心能力 6｜制度下的臨床工作',
-        title: '放射科是醫療流程中的關鍵節點',
-        tags: ['重點：系統、流程、團隊合作'],
-        body: [
-          '在制度下的臨床工作方面，我更理解放射科不是獨立運作的單位，而是整個醫療流程中的關鍵節點。',
-          '一個檢查從開單、安排、執行、影像品質確認，到判讀、通報與後續追蹤，每個環節都需要放射師、護理師、行政同仁、臨床醫師與放射科醫師合作。',
-          '如果流程順暢，病人可以更快得到診斷；如果流程中有任何延遲或資訊落差，臨床照護也可能受到影響。這讓我學到，好的醫療不只靠個人能力，也靠團隊與系統。'
-        ]
+            "kicker": "核心能力 1｜老師回答",
+            "title": "影像判讀的終點是治療決策",
+            "time": "建議：25 秒",
+            "tags": [
+                  "臨床決策",
+                  "報告品質"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "最重要的是記得：影像判讀的終點不是報告本身，而是病人的治療決策。"
+                        ]
+                  }
+            ]
       },
       {
-        kicker: '總結反思｜約 60 秒',
-        title: '六大核心能力，是每天都會用到的臨床能力',
-        tags: ['結尾：語速放慢、眼神看鏡頭'],
-        body: [
-          '透過這次回顧，我更理解六大核心能力不是考核表上的項目，而是放射科臨床工作中每天都會用到的能力。',
-          '病人照護讓我記得，影像判讀的終點是病人的治療決策；醫學知識讓我持續累積判斷的基礎；學習與改進提醒我從回饋中修正自己；溝通技巧讓影像資訊能被正確傳遞；專業素養讓我在壓力下仍然守住品質與隱私；制度下的臨床工作則提醒我，醫療照護永遠是團隊合作。',
-          '未來我希望自己能持續精進影像判讀能力，也讓每一份報告、每一次通報與每一次討論，都能更貼近臨床需要，真正幫助病人。謝謝大家。'
-        ]
+            "kicker": "核心能力 1｜老師補充",
+            "title": "報告要幫助治療選擇",
+            "time": "建議：25 秒",
+            "tags": [
+                  "手術",
+                  "介入治療",
+                  "抗生素"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "報告要能幫臨床團隊判斷病人是否需要手術、介入治療、抗生素，或進一步檢查。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 1｜學生整理",
+            "title": "好的報告要可執行",
+            "time": "建議：22 秒",
+            "tags": [
+                  "病灶位置",
+                  "範圍",
+                  "併發症"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "也就是說，好的報告要能回答臨床真正需要的資訊，例如病灶位置、範圍、併發症，以及是否有立即危險。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 2｜老師提問",
+            "title": "醫學知識",
+            "time": "建議：18 秒",
+            "tags": [
+                  "六大核心能力 2"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "那你覺得放射科的醫學知識，和一般臨床科有什麼不同？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 2｜學生回答",
+            "title": "把影像和疾病脈絡連起來",
+            "time": "建議：25 秒",
+            "tags": [
+                  "解剖",
+                  "病理",
+                  "臨床情境"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "放射科需要把解剖、病理、影像表現和臨床情境連起來。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 2｜學生補充",
+            "title": "同一個影像徵象，脈絡不同意義也不同",
+            "time": "建議：25 秒",
+            "tags": [
+                  "鑑別診斷"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "同一個影像徵象，在不同年齡、病史或症狀下，鑑別診斷可能不一樣。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 2｜老師補充",
+            "title": "不確定時，要回到證據",
+            "time": "建議：25 秒",
+            "tags": [
+                  "舊片比較",
+                  "guideline",
+                  "文獻"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "遇到不典型的影像表現時，不能只靠直覺。要回頭看病史、比較舊片、查 guideline 或文獻，也要願意和臨床團隊討論。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 3｜學生提問",
+            "title": "臨床工作中的學習與改進",
+            "time": "建議：18 秒",
+            "tags": [
+                  "六大核心能力 3"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "老師，放射科要怎麼在臨床工作中持續學習和改進？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 3｜老師回答",
+            "title": "回饋讓判讀更完整",
+            "time": "建議：25 秒",
+            "tags": [
+                  "病例討論",
+                  "病理結果"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "放射科很依賴回饋。病例討論、手術結果、病理結果、後續追蹤影像，都可以幫我們檢查原本的判讀是否完整。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 3｜學生整理",
+            "title": "錯誤要轉成流程改進",
+            "time": "建議：30 秒",
+            "tags": [
+                  "搜尋模式",
+                  "臨床資訊",
+                  "鑑別診斷"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "如果發現自己漏掉一個細節，重要的不是只記住答案，而是回頭想：是搜尋模式不完整？臨床資訊沒有整合？還是鑑別診斷想得不夠廣？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 3｜老師總結",
+            "title": "把錯誤變成進步",
+            "time": "建議：15 秒",
+            "tags": [
+                  "反思"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "對。把錯誤轉成流程上的改進，才是臨床能力真正進步的地方。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 4｜老師提問",
+            "title": "人際溝通技巧",
+            "time": "建議：18 秒",
+            "tags": [
+                  "六大核心能力 4"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "如果影像有危急發現，放射科醫師只把報告完成，這樣夠不夠？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 4｜學生回答",
+            "title": "危急發現需要及時通報",
+            "time": "建議：25 秒",
+            "tags": [
+                  "危急值通報"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "不夠。危急或重要發現需要及時通報，並且確認臨床團隊理解影像的嚴重性與可能的下一步。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 4｜老師補充",
+            "title": "溝通要清楚、精簡、可執行",
+            "time": "建議：30 秒",
+            "tags": [
+                  "主要發現",
+                  "可能診斷",
+                  "下一步"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "好的溝通要清楚、精簡、可執行。像是主要發現、最可能診斷、嚴重程度，以及是否建議立即處置或進一步檢查。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 4｜學生整理",
+            "title": "溝通不只在報告文字",
+            "time": "建議：20 秒",
+            "tags": [
+                  "電話",
+                  "會診",
+                  "跨科會議"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "所以放射科的溝通不只在報告文字，也在電話、會診討論和跨科會議裡。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 5｜學生提問",
+            "title": "專業素養",
+            "time": "建議：18 秒",
+            "tags": [
+                  "六大核心能力 5"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "老師，放射科的專業素養通常會展現在哪些地方？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 5｜老師回答",
+            "title": "時間壓力下仍要維持品質",
+            "time": "建議：25 秒",
+            "tags": [
+                  "準確",
+                  "清楚",
+                  "負責任"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "最常見的是在時間壓力下仍然維持品質。急診、住院和門診影像很多，但我們還是要盡力做到準確、清楚、負責任。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 5｜老師補充",
+            "title": "病人隱私必須被保護",
+            "time": "建議：28 秒",
+            "tags": [
+                  "去識別化",
+                  "病歷號",
+                  "檢查編號"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "另一個很重要的是病人隱私。影像、報告、檢查編號、病歷號都可能辨識病人。教學、討論，甚至拍這支影片，都要確實去識別化。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 5｜學生整理",
+            "title": "專業包含對病人尊嚴的保護",
+            "time": "建議：20 秒",
+            "tags": [
+                  "病人資料",
+                  "尊重"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "這提醒我，專業不只是醫學能力，也包含對病人資料和病人尊嚴的保護。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 6｜老師提問",
+            "title": "制度下的臨床工作",
+            "time": "建議：20 秒",
+            "tags": [
+                  "六大核心能力 6"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "你覺得一個影像檢查，從開單到報告完成，中間有哪些人參與？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 6｜學生回答",
+            "title": "影像檢查是一條團隊流程",
+            "time": "建議：30 秒",
+            "tags": [
+                  "臨床醫師",
+                  "放射師",
+                  "護理師",
+                  "行政"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "有開單的臨床醫師、行政流程、放射師、護理師，最後由放射科醫師判讀與通報。必要時還會連結急診、外科、內科或介入團隊。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "核心能力 6｜老師總結",
+            "title": "流程順，病人就更快得到診斷",
+            "time": "建議：28 秒",
+            "tags": [
+                  "系統",
+                  "流程",
+                  "團隊合作"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "所以放射科不是單獨作業，而是醫療系統的關鍵節點。流程順，病人就能更快得到診斷；流程卡住，照護也會被延遲。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "臨床教師視角｜學生提問",
+            "title": "老師最希望學生學到什麼？",
+            "time": "建議：20 秒",
+            "tags": [
+                  "主治醫師兼臨床教師"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "老師身為臨床教師，在帶學生看影像時，最希望我們學到什麼？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "臨床教師視角｜老師回答",
+            "title": "教學不是給答案，而是教會思考",
+            "time": "建議：30 秒",
+            "tags": [
+                  "臨床思考",
+                  "報告價值"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "我希望學生不要只問「這是什麼診斷」，而是練習完整的臨床思考：為什麼這個病人要做這個檢查？影像回答了什麼問題？還有哪些限制？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "臨床教師視角｜老師補充",
+            "title": "報告要回到臨床需求",
+            "time": "建議：22 秒",
+            "tags": [
+                  "教學重點"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "更重要的是，報告要怎麼寫才對臨床有幫助。這才是放射科教學裡很核心的一部分。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "臨床教師視角｜學生整理",
+            "title": "從影像回到病人",
+            "time": "建議：18 秒",
+            "tags": [
+                  "學生反思"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "也就是從影像出發，但不要停在影像，要回到病人和臨床決策。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "學生反思｜老師提問",
+            "title": "你對放射科角色的新理解？",
+            "time": "建議：18 秒",
+            "tags": [
+                  "反思"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "經過這次討論，你對放射科醫師的角色有什麼新的理解？"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "學生反思｜學生回答",
+            "title": "放射科醫師是關鍵資訊提供者",
+            "time": "建議：24 秒",
+            "tags": [
+                  "臨床照護流程"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "我更理解放射科醫師不是躲在螢幕後面看影像，而是在病人照護流程中提供關鍵資訊的人。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "學生反思｜學生補充",
+            "title": "報告與通報都可能影響治療",
+            "time": "建議：28 秒",
+            "tags": [
+                  "報告",
+                  "危急值通報",
+                  "跨科討論"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "一份清楚的報告、一次及時的危急值通報、一次有效的跨科討論，都可能讓病人更快得到正確治療。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "學生反思｜學生總結",
+            "title": "六大核心能力每天都用得到",
+            "time": "建議：18 秒",
+            "tags": [
+                  "六大核心能力"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "這也讓我看到，六大核心能力在放射科其實每天都用得到。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "結尾 1｜老師",
+            "title": "六大核心能力不是考核名詞",
+            "time": "建議：30 秒",
+            "tags": [
+                  "總結"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "六大核心能力不是考核表上的名詞，而是每天臨床工作中會反覆用到的能力。對放射科來說，它體現在影像判讀、報告品質、危急值通報、跨團隊合作，以及對病人隱私的保護。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "結尾 2｜學生",
+            "title": "不只是看懂影像，更要幫助病人",
+            "time": "建議：25 秒",
+            "tags": [
+                  "學生結語"
+            ],
+            "lines": [
+                  {
+                        "role": "student",
+                        "text": [
+                              "未來我也希望自己能把影像所見和臨床照護連在一起，不只是看懂影像，更能理解影像如何幫助病人。"
+                        ]
+                  }
+            ]
+      },
+      {
+            "kicker": "結尾 3｜老師",
+            "title": "謝謝大家",
+            "time": "建議：10 秒",
+            "tags": [
+                  "兩人可一起入鏡"
+            ],
+            "lines": [
+                  {
+                        "role": "teacher",
+                        "text": [
+                              "這就是今天想分享的重點。謝謝大家。"
+                        ]
+                  }
+            ]
       }
-    ];
+];
 
     const state = {
-      index: Number(localStorage.getItem('slideIndex') || 0),
+      index: Number(localStorage.getItem('qnaSlideIndex') || 0),
       auto: false,
       timer: null,
-      speed: Number(localStorage.getItem('speed') || 3)
+      speed: Number(localStorage.getItem('qnaSpeed') || 3)
     };
 
     const el = {
@@ -426,7 +1007,8 @@
       counter: document.getElementById('counter'),
       kicker: document.getElementById('kicker'),
       title: document.getElementById('title'),
-      script: document.getElementById('script'),
+      timer: document.getElementById('timer'),
+      dialogue: document.getElementById('dialogue'),
       meta: document.getElementById('meta'),
       prev: document.getElementById('prev'),
       next: document.getElementById('next'),
@@ -441,81 +1023,78 @@
       printAll: document.getElementById('printAll')
     };
 
+    function emphasize(text) {
+      return text
+        .replaceAll('主治醫師兼臨床教師', '<strong>主治醫師兼臨床教師</strong>')
+        .replaceAll('醫學實習生', '<strong>醫學實習生</strong>')
+        .replaceAll('六大核心能力', '<strong>六大核心能力</strong>')
+        .replaceAll('危急值通報', '<strong>危急值通報</strong>')
+        .replaceAll('病人隱私', '<strong>病人隱私</strong>')
+        .replaceAll('去識別化', '<strong>去識別化</strong>')
+        .replaceAll('臨床決策', '<strong>臨床決策</strong>');
+    }
+
     function render() {
       state.index = Math.max(0, Math.min(slides.length - 1, state.index));
       const slide = slides[state.index];
       el.kicker.textContent = slide.kicker;
       el.title.textContent = slide.title;
-      el.script.innerHTML = slide.body.map(text => `<p>${emphasis(text)}</p>`).join('');
-      el.script.scrollTop = 0;
+      el.timer.textContent = slide.time;
+      el.dialogue.innerHTML = slide.lines.map(line => {
+        const role = roleNames[line.role];
+        return `<section class="line ${line.role}">
+          <div class="role"><span class="badge">${role.short}</span><span>${role.label}</span></div>
+          <div class="text">${line.text.map(p => `<p>${emphasize(p)}</p>`).join('')}</div>
+        </section>`;
+      }).join('');
+      el.dialogue.scrollTop = 0;
       el.meta.innerHTML = slide.tags.map(tag => `<span class="pill">${tag}</span>`).join('');
       el.counter.textContent = `${state.index + 1} / ${slides.length}`;
       el.progress.style.width = `${((state.index + 1) / slides.length) * 100}%`;
       el.prev.disabled = state.index === 0;
       el.next.textContent = state.index === slides.length - 1 ? '回到開場 ↺' : '下一段 →';
-      localStorage.setItem('slideIndex', String(state.index));
+      localStorage.setItem('qnaSlideIndex', String(state.index));
       renderToc();
     }
 
-    function emphasis(text) {
-      return text
-        .replaceAll('放射科醫師', '<strong>放射科醫師</strong>')
-        .replaceAll('六大核心能力', '<strong>六大核心能力</strong>')
-        .replaceAll('病人隱私', '<strong>病人隱私</strong>')
-        .replaceAll('危急值通報', '<strong>危急值通報</strong>')
-        .replaceAll('去識別化', '<strong>去識別化</strong>');
-    }
-
     function next() {
-      if (state.index >= slides.length - 1) state.index = 0;
-      else state.index += 1;
+      state.index = state.index >= slides.length - 1 ? 0 : state.index + 1;
       stopAuto();
       render();
     }
-
     function prev() {
       state.index -= 1;
       stopAuto();
       render();
     }
-
-    function toggleAuto() {
-      state.auto ? stopAuto() : startAuto();
-    }
-
     function startAuto() {
       state.auto = true;
       el.auto.textContent = '停止捲動';
       state.timer = setInterval(() => {
-        el.script.scrollTop += state.speed;
-        const atBottom = el.script.scrollTop + el.script.clientHeight >= el.script.scrollHeight - 4;
+        el.dialogue.scrollTop += state.speed;
+        const atBottom = el.dialogue.scrollTop + el.dialogue.clientHeight >= el.dialogue.scrollHeight - 4;
         if (atBottom) stopAuto();
       }, 40);
     }
-
     function stopAuto() {
       state.auto = false;
       el.auto.textContent = '自動捲動';
       if (state.timer) clearInterval(state.timer);
       state.timer = null;
     }
-
+    function toggleAuto() { state.auto ? stopAuto() : startAuto(); }
     function toggleTheme() {
       const nextTheme = el.body.dataset.theme === 'dark' ? 'light' : 'dark';
       el.body.dataset.theme = nextTheme;
-      localStorage.setItem('theme', nextTheme);
+      localStorage.setItem('qnaTheme', nextTheme);
     }
-
     function renderToc() {
-      el.toc.innerHTML = slides.map((slide, i) =>
-        `<button class="${i === state.index ? 'active' : ''}" data-index="${i}">${i + 1}. ${slide.title}</button>`
-      ).join('');
+      el.toc.innerHTML = slides.map((slide, i) => `<button class="${i === state.index ? 'active' : ''}" data-index="${i}">${i + 1}. ${slide.title}</button>`).join('');
     }
-
     function renderPrint() {
-      el.printAll.innerHTML = `<h1>六大核心能力學習反思｜放射科醫師臨床照護</h1>` + slides.map((slide, i) => `
+      el.printAll.innerHTML = `<h1>六大核心能力｜放射科一問一答逐字稿</h1>` + slides.map((slide, i) => `
         <h2>${i + 1}. ${slide.title}</h2>
-        ${slide.body.map(p => `<p>${p}</p>`).join('')}
+        ${slide.lines.map(line => `<div class="print-role">${roleNames[line.role].label}</div>${line.text.map(p => `<p>${p}</p>`).join('')}`).join('')}
       `).join('');
     }
 
@@ -528,22 +1107,22 @@
     });
     el.settings.addEventListener('click', () => el.drawer.classList.toggle('open'));
     el.theme.addEventListener('click', toggleTheme);
-    el.fontSize.addEventListener('input', (e) => {
+    el.fontSize.addEventListener('input', e => {
       document.documentElement.style.setProperty('--font-size', `${e.target.value}px`);
-      localStorage.setItem('fontSize', e.target.value);
+      localStorage.setItem('qnaFontSize', e.target.value);
     });
-    el.speed.addEventListener('input', (e) => {
+    el.speed.addEventListener('input', e => {
       state.speed = Number(e.target.value);
-      localStorage.setItem('speed', e.target.value);
+      localStorage.setItem('qnaSpeed', e.target.value);
     });
-    el.toc.addEventListener('click', (e) => {
+    el.toc.addEventListener('click', e => {
       const button = e.target.closest('button[data-index]');
       if (!button) return;
       state.index = Number(button.dataset.index);
       stopAuto();
       render();
     });
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (e.key === 'ArrowRight') next();
       if (e.key === 'ArrowLeft') prev();
       if (e.key === ' ') { e.preventDefault(); toggleAuto(); }
@@ -552,9 +1131,9 @@
       if (e.key === 'Escape') el.drawer.classList.remove('open');
     });
 
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('qnaTheme');
     if (savedTheme) el.body.dataset.theme = savedTheme;
-    const savedFontSize = localStorage.getItem('fontSize');
+    const savedFontSize = localStorage.getItem('qnaFontSize');
     if (savedFontSize) {
       el.fontSize.value = savedFontSize;
       document.documentElement.style.setProperty('--font-size', `${savedFontSize}px`);
